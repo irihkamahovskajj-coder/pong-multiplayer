@@ -1,0 +1,5 @@
+[build]
+  publish = "client"
+
+[build.environment]
+  NODE_VERSION = "20"

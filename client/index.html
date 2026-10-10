@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="Pong Multiplayer — играй с друзьями в Pong на 2–4 игроков.">
+  <title>PONG ARENA — Multiplayer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <main class="app">
+    <header class="topbar"><div class="brand-mark">P<span>•</span></div><div><div class="brand">PONG <span>ARENA</span></div><div class="tagline">MULTIPLAYER · 2–4 PLAYERS</div></div><div class="connection"><i id="connectionDot"></i><span id="connectionText">Подключение…</span></div></header>
+    <section id="lobby" class="panel lobby-panel">
+      <div class="eyebrow">● ONLINE ARCADE</div><h1>Сыграем<br><span>по-крупному.</span></h1>
+      <p class="intro">Создай комнату, отправь друзьям код и проверь, кто настоящий чемпион Pong.</p>
+      <label class="field-label" for="playerName">ТВОЙ НИК</label><input id="playerName" maxlength="16" placeholder="Например, PixelFox" autocomplete="nickname">
+      <div class="actions"><button id="createBtn" class="button primary">＋ Создать комнату</button><div class="join-row"><input id="roomCode" maxlength="5" placeholder="КОД КОМНАТЫ" autocomplete="off"><button id="joinBtn" class="button secondary">Войти ↗</button></div></div>
+      <div id="lobbyMessage" class="message" aria-live="polite"></div>
+      <div class="feature-row"><div><b>02–04</b><small>ИГРОКА</small></div><div><b>10</b><small>ОЧКОВ ДО ПОБЕДЫ</small></div><div><b>∞</b><small>РЕВАНШЕЙ</small></div></div>
+    </section>
+    <section id="roomPanel" class="panel room-panel hidden">
+      <div class="room-head"><div><div class="eyebrow">● ТВОЁ ЛОББИ</div><h2>Комната <span id="roomCodeLabel">-----</span></h2></div><button id="leaveBtn" class="button ghost">Выйти</button></div>
+      <div class="invite"><div><small>ПРИГЛАСИ ДРУЗЕЙ</small><strong id="inviteCode">-----</strong></div><button id="copyBtn" class="button secondary">Копировать код</button></div>
+      <div class="players-heading"><span>ИГРОКИ</span><span id="playerCount">0 / 4</span></div><div id="playersList" class="players-list"></div>
+      <button id="startBtn" class="button primary start-button">▶ Начать игру</button><p class="hint">Нужно минимум 2 игрока. До старта можно присоединиться ещё одному другу.</p>
+      <div id="roomMessage" class="message" aria-live="polite"></div>
+    </section>
+    <section id="gamePanel" class="panel game-panel hidden">
+      <div class="game-head"><div><div class="eyebrow">● LIVE MATCH</div><h2>Pong <span>Arena</span></h2></div><div class="match-code">КОМНАТА <b id="gameRoomCode">-----</b></div></div>
+      <div id="scoreboard" class="scoreboard"></div>
+      <div class="canvas-wrap"><canvas id="gameCanvas" width="900" height="600" aria-label="Игровое поле Pong"></canvas><div id="gameOverlay" class="game-overlay hidden"><div class="overlay-card"><div class="eyebrow">MATCH UPDATE</div><h2 id="overlayTitle">Готовы?</h2><p id="overlayText"></p><button id="overlayButton" class="button primary">Продолжить</button></div></div></div>
+      <div class="game-footer"><span>Управление: мышь, касание или ← → / ↑ ↓</span><button id="backToRoomBtn" class="button ghost">В лобби</button></div>
+      <div id="gameMessage" class="message" aria-live="polite"></div>
+    </section>
+    <footer>MADE FOR FRIENDS <span>✦</span> PONG ARENA</footer>
+  </main>
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
